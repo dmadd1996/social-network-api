@@ -14,7 +14,7 @@ const UserSchema = new Schema({
     unique: true,
     required: true,
     match: [
-      /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+      /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
       "this must be an email address"
     ]
   },
@@ -37,7 +37,7 @@ const UserSchema = new Schema({
 }
 );
 
-UserSchema.virtuals("friendCount").get(function(){
+UserSchema.virtual("friendCount").get(function(){
   return this.friends.length
 })
 
